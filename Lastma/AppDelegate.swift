@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        GMSServices.provideAPIKey("AIzaSyDSEJpoiFA0dqYEyIkBAHwzdceq-vrIqtU")
+
+        let viewController = MapViewController()
+
+        // makes the window the size of the screen
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = viewController
+        // presents the window
+        window?.makeKeyAndVisible()
         return true
     }
 

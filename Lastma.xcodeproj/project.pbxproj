@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		0E2609DEAF6BFFAE2C8884DC /* libPods-Lastma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 522A3402A3D9AC76217D1EC6 /* libPods-Lastma.a */; };
 		35854386204F6FCE00538842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35854385204F6FCE00538842 /* AppDelegate.swift */; };
-		35854388204F6FCE00538842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35854387204F6FCE00538842 /* ViewController.swift */; };
 		3585438D204F6FCE00538842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3585438C204F6FCE00538842 /* Assets.xcassets */; };
 		35854390204F6FCE00538842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3585438E204F6FCE00538842 /* LaunchScreen.storyboard */; };
+		358543992050D74C00538842 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358543982050D74C00538842 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		15389E795739494D7EA20175 /* Pods-Lastma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lastma.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lastma/Pods-Lastma.debug.xcconfig"; sourceTree = "<group>"; };
 		35854382204F6FCE00538842 /* Lastma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lastma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35854385204F6FCE00538842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		35854387204F6FCE00538842 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3585438C204F6FCE00538842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3585438F204F6FCE00538842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35854391204F6FCE00538842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		358543982050D74C00538842 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		522A3402A3D9AC76217D1EC6 /* libPods-Lastma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lastma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69924BA053685BDFE40E2BB8 /* Pods-Lastma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lastma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lastma/Pods-Lastma.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +59,9 @@
 		35854384204F6FCE00538842 /* Lastma */ = {
 			isa = PBXGroup;
 			children = (
+				3585439C2050F47400538842 /* Views */,
+				3585439B2050F46300538842 /* Api */,
+				3585439A2050F44400538842 /* Model */,
 				35854397204F876400538842 /* ViewControllers */,
 				35854385204F6FCE00538842 /* AppDelegate.swift */,
 				3585438C204F6FCE00538842 /* Assets.xcassets */,
@@ -71,9 +74,30 @@
 		35854397204F876400538842 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				35854387204F6FCE00538842 /* ViewController.swift */,
+				358543982050D74C00538842 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3585439A2050F44400538842 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3585439B2050F46300538842 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		3585439C2050F47400538842 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		53EC458E9BC3DA3E92E71C1D /* Frameworks */ = {
@@ -221,7 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35854388204F6FCE00538842 /* ViewController.swift in Sources */,
+				358543992050D74C00538842 /* MapViewController.swift in Sources */,
 				35854386204F6FCE00538842 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
