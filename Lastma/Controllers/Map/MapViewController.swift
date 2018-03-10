@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import SnapKit
 //import GooglePlaces
 
 class MapViewController: UIViewController {
@@ -22,15 +23,14 @@ class MapViewController: UIViewController {
 
     // Update the map once the user has made their selection.
 
+    let mapAddressTextField: MapAddressTextField = {
+        let textField = MapAddressTextField()
+        return textField
+    }()
+
     override func loadView() {
         // Create a map.
-        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
-                                              longitude: defaultLocation.coordinate.longitude,
-                                              zoom: zoomLevel)
-        mapView = GMSMapView.map(withFrame: .zero, camera: camera)
-        mapView.settings.myLocationButton = true
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.isMyLocationEnabled = true
+        setupViews()
         view = mapView
 
         // Create a marker in the center of the map
@@ -52,18 +52,46 @@ class MapViewController: UIViewController {
         locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
+        mapView.delegate = self
 
-        // Add the map to the view, hide it until we've got a location update.
-        //view.addSubview(mapView)
-        //mapView.isHidden = true
-        //mapView.isHidden = false
+        // All GMSMapViews have a GMSBlockingGestureRecognizer by default which block other gestures
+        // such as clicking on a text field, so we have to remove it.
+//        for gesture in mapView.gestureRecognizers! {
+//            print("gesture: \(gesture)")
+//            mapView.removeGestureRecognizer(gesture)
+//        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+//        mapAddressTextField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    func setupViews() {
+        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
+                                              longitude: defaultLocation.coordinate.longitude,
+                                              zoom: zoomLevel,
+                                              bearing: 30,
+                                              viewingAngle: 45.0)
+
+        mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+        mapView.settings.myLocationButton = true
+        mapView.settings.consumesGesturesInView = false
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.isMyLocationEnabled = true
+        mapView.addSubview(mapAddressTextField)
+
+        mapAddressTextField.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(Constants.MAP_ADDRESS_TEXT_FIELD_HORIZONTAL_MARGIN)
+            make.right.equalToSuperview().offset(-Constants.MAP_ADDRESS_TEXT_FIELD_HORIZONTAL_MARGIN)
+            make.top.equalToSuperview().offset(Constants.MAP_ADDRESS_TEXT_FIELD_VERTICAL_MARGIN)
+            make.height.equalTo(Constants.MAP_ADDRESS_TEXT_FIELD_HEIGHT)
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -117,3 +145,15 @@ extension MapViewController: CLLocationManagerDelegate {
         print("Error: \(error)")
     }
 }
+
+extension MapViewController: GMSMapViewDelegate {
+  func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+    print("mapView tapped at coordinate")
+    print("mapAddressTextField.isEditing: \(mapAddressTextField.isEditing)")
+    if (mapAddressTextField.isEditing) {
+        mapAddressTextField.endEditing(true)
+    }
+  }
+
+}
+

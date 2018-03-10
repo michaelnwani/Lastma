@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E2609DEAF6BFFAE2C8884DC /* libPods-Lastma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 522A3402A3D9AC76217D1EC6 /* libPods-Lastma.a */; };
 		35854386204F6FCE00538842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35854385204F6FCE00538842 /* AppDelegate.swift */; };
 		3585438D204F6FCE00538842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3585438C204F6FCE00538842 /* Assets.xcassets */; };
 		35854390204F6FCE00538842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3585438E204F6FCE00538842 /* LaunchScreen.storyboard */; };
-		358543992050D74C00538842 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358543982050D74C00538842 /* MapViewController.swift */; };
+		3585439E20522E7F00538842 /* MapAddressTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3585439D20522E7F00538842 /* MapAddressTextField.swift */; };
+		358543A020535C6C00538842 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3585439F20535C6C00538842 /* Constants.swift */; };
+		C045E80C504EB313AE4B7760 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045E21AB865060AADB6A35A /* MapViewController.swift */; };
+		F258BB10A401F240C2F96256 /* Pods_Lastma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473D41BA703A876AEDAD64BE /* Pods_Lastma.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +23,11 @@
 		3585438C204F6FCE00538842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3585438F204F6FCE00538842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35854391204F6FCE00538842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		358543982050D74C00538842 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		522A3402A3D9AC76217D1EC6 /* libPods-Lastma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Lastma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3585439D20522E7F00538842 /* MapAddressTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddressTextField.swift; sourceTree = "<group>"; };
+		3585439F20535C6C00538842 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		473D41BA703A876AEDAD64BE /* Pods_Lastma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lastma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69924BA053685BDFE40E2BB8 /* Pods-Lastma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lastma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lastma/Pods-Lastma.release.xcconfig"; sourceTree = "<group>"; };
+		C045E21AB865060AADB6A35A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E2609DEAF6BFFAE2C8884DC /* libPods-Lastma.a in Frameworks */,
+				F258BB10A401F240C2F96256 /* Pods_Lastma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,8 +65,8 @@
 			children = (
 				3585439C2050F47400538842 /* Views */,
 				3585439B2050F46300538842 /* Api */,
-				3585439A2050F44400538842 /* Model */,
-				35854397204F876400538842 /* ViewControllers */,
+				3585439A2050F44400538842 /* Models */,
+				35854397204F876400538842 /* Controllers */,
 				35854385204F6FCE00538842 /* AppDelegate.swift */,
 				3585438C204F6FCE00538842 /* Assets.xcassets */,
 				3585438E204F6FCE00538842 /* LaunchScreen.storyboard */,
@@ -71,24 +75,25 @@
 			path = Lastma;
 			sourceTree = "<group>";
 		};
-		35854397204F876400538842 /* ViewControllers */ = {
+		35854397204F876400538842 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				358543982050D74C00538842 /* MapViewController.swift */,
+				C045E3CB8E0104DFBCD87790 /* Map */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		3585439A2050F44400538842 /* Model */ = {
+		3585439A2050F44400538842 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		3585439B2050F46300538842 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				3585439F20535C6C00538842 /* Constants.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -103,9 +108,42 @@
 		53EC458E9BC3DA3E92E71C1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				522A3402A3D9AC76217D1EC6 /* libPods-Lastma.a */,
+				473D41BA703A876AEDAD64BE /* Pods_Lastma.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C045E1E6BFFE7BE0916321D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3585439D20522E7F00538842 /* MapAddressTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C045E3CB8E0104DFBCD87790 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C045EC59439710C962F06083 /* Data */,
+				C045ED281A29737EB5A71914 /* Models */,
+				C045E1E6BFFE7BE0916321D3 /* Views */,
+				C045E21AB865060AADB6A35A /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		C045EC59439710C962F06083 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C045ED281A29737EB5A71914 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EC9206C10A5BEA58A638348E /* Pods */ = {
@@ -193,9 +231,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Lastma/Pods-Lastma-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -245,8 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				358543992050D74C00538842 /* MapViewController.swift in Sources */,
 				35854386204F6FCE00538842 /* AppDelegate.swift in Sources */,
+				C045E80C504EB313AE4B7760 /* MapViewController.swift in Sources */,
+				3585439E20522E7F00538842 /* MapAddressTextField.swift in Sources */,
+				358543A020535C6C00538842 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
