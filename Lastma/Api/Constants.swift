@@ -29,6 +29,10 @@ struct Constants {
       return UIScreen.main.bounds.width == 1024.0
   }()
 
+  static let SERVER_URL: String = {
+    return "http://lastma.herokuapp.com/api/v1/"
+  }()
+
   static func getSize(_ size: CGFloat, _ incrementAmount: CGFloat) -> CGFloat {
     var baseSize = size
     if (xLargeDevice) {
