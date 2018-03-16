@@ -39,6 +39,32 @@ final class MapViewController: UIViewController {
       return textField
   }()
 
+  let leftBarButton: UIButton = {
+    let barButton = UIButton(type: UIButtonType.custom)
+    barButton.setImage(UIImage(named: "hamburgerIcon"), for: UIControlState.normal)
+    barButton.frame = CGRect(x: 0,
+                             y: 0,
+                             width: Constants.HAMBURGER_ICON_BUTTON_WIDTH_OR_HEIGHT,
+                             height: Constants.HAMBURGER_ICON_BUTTON_WIDTH_OR_HEIGHT)
+    return barButton
+  }()
+
+  let hamburgerIconButton: UIButton = {
+    let barButton = UIButton(type: UIButtonType.custom)
+    barButton.setImage(UIImage(named: "hamburgerIcon"), for: UIControlState.normal)
+    barButton.frame = CGRect(x: 0,
+                             y: 0,
+                             width: Constants.HAMBURGER_ICON_BUTTON_WIDTH_OR_HEIGHT,
+                             height: Constants.HAMBURGER_ICON_BUTTON_WIDTH_OR_HEIGHT)
+    return barButton
+  }()
+
+  lazy var menuLauncher: MenuLauncher = {
+    let launcher = MenuLauncher()
+    launcher.mapViewController = self
+    return launcher
+  }()
+
 //  init() {
 //    super.init(nibName: nil, bundle: nil)
 //  }
@@ -81,6 +107,7 @@ final class MapViewController: UIViewController {
 
     listLikelyPlaces()
     listMarkers()
+    hamburgerIconButton.addTarget(self, action: #selector(handleMainMenu), for: .touchUpInside)
     mapAddressTextField.addTarget(self, action: #selector(textFieldDidBeginEditing), for: .editingDidBegin)
     // All GMSMapViews have a GMSBlockingGestureRecognizer by default which block other gestures
     // such as clicking on a text field, so we have to remove it.
@@ -88,6 +115,28 @@ final class MapViewController: UIViewController {
 //            print("gesture: \(gesture)")
 //            mapView.removeGestureRecognizer(gesture)
 //        }
+  }
+
+  @objc func handleMainMenu() {
+    print("handleMainMenu")
+    menuLauncher.showSettings()
+  }
+
+  @objc func showControllerForSetting(menuItem: MenuItem) {
+//    switch menuItem.name {
+//    case .OptOut:
+//      CheddahUtil.shared().optOutUser()
+//    case .TermsPrivacy:
+//      let privacyPolicyController = PrivacyPolicyController()
+//      privacyPolicyController.navigationItem.title = menuItem.name.rawValue
+//      //        privacyPolicyController.view.backgroundColor = .white
+//      navigationController?.navigationBar.tintColor = UIColor(red: 0, green: 214.0/255.0, blue: 158.0/255.0, alpha: 1.0)
+//      // NSForegroundColorAttributeName changed to NSAttributedStringKey.foregroundColor
+//      navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: 0, green: 214.0/255.0, blue: 158.0/255.0, alpha: 1.0)]
+//      navigationController?.pushViewController(privacyPolicyController, animated: true)
+//    default:
+//      print("foo")
+//    }
   }
 
   @objc func textFieldDidBeginEditing(sender: UITextField) {
@@ -118,7 +167,14 @@ final class MapViewController: UIViewController {
     mapView.settings.consumesGesturesInView = false
     mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     mapView.isMyLocationEnabled = true
+
+    mapView.addSubview(hamburgerIconButton)
     mapView.addSubview(mapAddressTextField)
+
+    hamburgerIconButton.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(Constants.HAMBURGER_ICON_BUTTON_VERTICAL_MARGIN)
+      make.left.equalToSuperview().offset(Constants.MAP_ADDRESS_TEXT_FIELD_HORIZONTAL_MARGIN)
+    }
 
     mapAddressTextField.snp.makeConstraints { (make) in
         make.left.equalToSuperview().offset(Constants.MAP_ADDRESS_TEXT_FIELD_HORIZONTAL_MARGIN)
