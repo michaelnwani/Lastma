@@ -10,6 +10,8 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'Lastma' do
-    pod 'GoogleMaps'
-    pod 'SnapKit'
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
+  pod 'GoogleMaps'
+  pod 'SnapKit'
 end

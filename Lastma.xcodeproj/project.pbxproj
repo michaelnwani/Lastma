@@ -13,6 +13,11 @@
 		3585439E20522E7F00538842 /* MapAddressTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3585439D20522E7F00538842 /* MapAddressTextField.swift */; };
 		358543A020535C6C00538842 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3585439F20535C6C00538842 /* Constants.swift */; };
 		C045E80C504EB313AE4B7760 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045E21AB865060AADB6A35A /* MapViewController.swift */; };
+		C045E893934D9889FC4A810F /* LastmaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045ECE9FAFB11D581A42B7B /* LastmaClient.swift */; };
+		C045E99CB41097FFCB820954 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045E94FE23FD1012BC2E38B /* BaseCell.swift */; };
+		C045EB31EDD0F3C14F678617 /* MenuIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045E643EEFE4B7B10233458 /* MenuIconCell.swift */; };
+		C045EEC1618BAA3499171D33 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045EFAD1D6084C2FD862E70 /* MenuItemCell.swift */; };
+		C045EF67B1B40B809B32D54E /* MenuLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045EF6758AE138CCE9A1AAD /* MenuLauncher.swift */; };
 		F258BB10A401F240C2F96256 /* Pods_Lastma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473D41BA703A876AEDAD64BE /* Pods_Lastma.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +33,11 @@
 		473D41BA703A876AEDAD64BE /* Pods_Lastma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lastma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69924BA053685BDFE40E2BB8 /* Pods-Lastma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lastma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lastma/Pods-Lastma.release.xcconfig"; sourceTree = "<group>"; };
 		C045E21AB865060AADB6A35A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		C045E643EEFE4B7B10233458 /* MenuIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuIconCell.swift; sourceTree = "<group>"; };
+		C045E94FE23FD1012BC2E38B /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		C045ECE9FAFB11D581A42B7B /* LastmaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastmaClient.swift; sourceTree = "<group>"; };
+		C045EF6758AE138CCE9A1AAD /* MenuLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuLauncher.swift; sourceTree = "<group>"; };
+		C045EFAD1D6084C2FD862E70 /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3585439F20535C6C00538842 /* Constants.swift */,
+				C045ECE9FAFB11D581A42B7B /* LastmaClient.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -101,6 +112,10 @@
 		3585439C2050F47400538842 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C045EF6758AE138CCE9A1AAD /* MenuLauncher.swift */,
+				C045EFAD1D6084C2FD862E70 /* MenuItemCell.swift */,
+				C045E94FE23FD1012BC2E38B /* BaseCell.swift */,
+				C045E643EEFE4B7B10233458 /* MenuIconCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,10 +284,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Lastma/Pods-Lastma-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -290,6 +309,11 @@
 				C045E80C504EB313AE4B7760 /* MapViewController.swift in Sources */,
 				3585439E20522E7F00538842 /* MapAddressTextField.swift in Sources */,
 				358543A020535C6C00538842 /* Constants.swift in Sources */,
+				C045E893934D9889FC4A810F /* LastmaClient.swift in Sources */,
+				C045EF67B1B40B809B32D54E /* MenuLauncher.swift in Sources */,
+				C045EEC1618BAA3499171D33 /* MenuItemCell.swift in Sources */,
+				C045E99CB41097FFCB820954 /* BaseCell.swift in Sources */,
+				C045EB31EDD0F3C14F678617 /* MenuIconCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
