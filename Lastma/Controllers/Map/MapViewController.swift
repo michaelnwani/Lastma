@@ -168,6 +168,16 @@ final class MapViewController: UIViewController {
     mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     mapView.isMyLocationEnabled = true
 
+    do {
+      if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+        mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+      } else {
+        print("Unable to find style.json")
+      }
+    } catch {
+      print("One or more of the map styles failed to load. \(error)")
+    }
+
     mapView.addSubview(hamburgerIconButton)
     mapView.addSubview(mapAddressTextField)
 

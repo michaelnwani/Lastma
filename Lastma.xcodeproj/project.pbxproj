@@ -12,6 +12,7 @@
 		35854390204F6FCE00538842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3585438E204F6FCE00538842 /* LaunchScreen.storyboard */; };
 		3585439E20522E7F00538842 /* MapAddressTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3585439D20522E7F00538842 /* MapAddressTextField.swift */; };
 		358543A020535C6C00538842 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3585439F20535C6C00538842 /* Constants.swift */; };
+		65D01840123C9081D988422D /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 65D01EA5E325931A5CFE5B0D /* style.json */; };
 		C045E80C504EB313AE4B7760 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045E21AB865060AADB6A35A /* MapViewController.swift */; };
 		C045E893934D9889FC4A810F /* LastmaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045ECE9FAFB11D581A42B7B /* LastmaClient.swift */; };
 		C045E99CB41097FFCB820954 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C045E94FE23FD1012BC2E38B /* BaseCell.swift */; };
@@ -31,6 +32,7 @@
 		3585439D20522E7F00538842 /* MapAddressTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddressTextField.swift; sourceTree = "<group>"; };
 		3585439F20535C6C00538842 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		473D41BA703A876AEDAD64BE /* Pods_Lastma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lastma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65D01EA5E325931A5CFE5B0D /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		69924BA053685BDFE40E2BB8 /* Pods-Lastma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lastma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lastma/Pods-Lastma.release.xcconfig"; sourceTree = "<group>"; };
 		C045E21AB865060AADB6A35A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C045E643EEFE4B7B10233458 /* MenuIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuIconCell.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				3585438C204F6FCE00538842 /* Assets.xcassets */,
 				3585438E204F6FCE00538842 /* LaunchScreen.storyboard */,
 				35854391204F6FCE00538842 /* Info.plist */,
+				65D010239E465725C07772AC /* SupportFiles */,
 			);
 			path = Lastma;
 			sourceTree = "<group>";
@@ -126,6 +129,14 @@
 				473D41BA703A876AEDAD64BE /* Pods_Lastma.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		65D010239E465725C07772AC /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				65D01EA5E325931A5CFE5B0D /* style.json */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 		C045E1E6BFFE7BE0916321D3 /* Views */ = {
@@ -234,6 +245,7 @@
 			files = (
 				35854390204F6FCE00538842 /* LaunchScreen.storyboard in Resources */,
 				3585438D204F6FCE00538842 /* Assets.xcassets in Resources */,
+				65D01840123C9081D988422D /* style.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
