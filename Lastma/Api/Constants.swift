@@ -85,5 +85,5 @@ struct Constants {
 
   static let MENU_ITEM_CELL_NAME_LABEL_HORIZONTAL_MARGIN: CGFloat = {
     return getSize(16.0, 2.0)
-  }
+  }()
 }
