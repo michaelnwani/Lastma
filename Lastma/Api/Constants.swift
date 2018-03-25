@@ -75,6 +75,10 @@ struct Constants {
     return getSize(100.0, 25.0)
   }()
 
+  static let MENU_LAUNCHER_WIDTH: CGFloat = {
+    return getSize(0.4, 0.1)
+  }()
+
   static let MENU_LAUNCHER_MINIMUM_LINE_SPACING_FOR_SECTION: CGFloat = {
     return getSize(10.0, 1.0)
   }()
@@ -85,5 +89,21 @@ struct Constants {
 
   static let MENU_ITEM_CELL_NAME_LABEL_HORIZONTAL_MARGIN: CGFloat = {
     return getSize(16.0, 2.0)
+  }()
+
+  static let MAP_COLLECTION_VIEW_CELL_DURATION_LABEL_SIZE: CGFloat = {
+    return getSize(14.0, 2.0)
+  }()
+
+  static let MAP_COLLECTION_VIEW_HEIGHT: CGFloat = {
+    return getSize(60.0, 5.0)
+  }()
+
+  static let MAP_COLLECTION_VIEW_CELL_VERTICAL_MARGIN: CGFloat = {
+    return getSize(80.0, 4.0)
+  }()
+
+  static let MAP_COLLECTION_VIEW_CELL_HORIZONTAL_MARGIN: CGFloat = {
+    return getSize(26.0, 4.0)
   }()
 }

@@ -9,8 +9,8 @@ import SnapKit
 class MenuItemCell: BaseCell {
   override var isHighlighted: Bool {
     didSet {
-      backgroundColor = isHighlighted ? UIColor.black : UIColor(red: 55.0/255.0, green: 69.0/255.0, blue: 80.0/255.0, alpha: 1.0)
-//            nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
+      backgroundColor = isHighlighted ? UIColor.black : .white
+      nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
 //            iconImageView.tintColor = isHighlighted ? UIColor.white : UIColor.darkGray
     }
   }
@@ -29,7 +29,8 @@ class MenuItemCell: BaseCell {
   let nameLabel: UILabel = {
     let label = UILabel()
     label.text = "MenuItem"
-    label.textColor = .white
+    label.textColor = .black
+    label.numberOfLines = 0
     label.font = UIFont(name: "Futura-CondensedMedium", size: Constants.MENU_ITEM_CELL_NAME_LABEL_SIZE)
     return label
   }()
