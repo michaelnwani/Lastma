@@ -5,6 +5,7 @@
 
 import UIKit
 import GoogleMaps
+import GooglePlaces
 
 public final class LastmaClient: NSObject {
 
@@ -94,6 +95,7 @@ public final class LastmaClient: NSObject {
         closure(jsonResponse)
       }
     }
+
     task.resume()
   }
 
@@ -117,6 +119,16 @@ public final class LastmaClient: NSObject {
         }
         completion(markers)
       }
+    }
+  }
+
+  func createMarker(_ marker: Marker) {
+    print("[createMarker] marker.toJsonDict(): ", marker.toJsonDict())
+    sendPostRequest(withPath: "markers",
+                    withJsonDict: marker.toJsonDict(),
+                    retries: 1
+    ) { dictionaries in
+
     }
   }
 }

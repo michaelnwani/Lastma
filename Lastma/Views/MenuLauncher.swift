@@ -16,25 +16,25 @@ class MenuItem: NSObject {
 }
 
 enum MenuItemName: String {
-  case Cancel = "Cancel"
   case Home = "Home"
-  case TermsPrivacy = "Privacy Policy"
-  case OptOut = "Opt Out"
+  case About = "About"
+  case PlanADrive = "Plan a drive"
+  case RoadRules = "Road rules"
+  case EmergencyContact = "Emergency #s"
+  case Cancel = "Cancel"
 }
 
 class MenuLauncher: NSObject {
-  let blackView = UIView()
-  let menuItemCellId = "menuItemCellId"
-  let menuIconCellId = "menuIconCellId"
+  let menuTintView = UIView()
   let cellHeight: CGFloat = Constants.MENU_LAUNCHER_CELL_HEIGHT
-
   let collectionView: UICollectionView = {
     let collectionViewFlowLayout = UICollectionViewFlowLayout()
     collectionViewFlowLayout.scrollDirection = .vertical
 
-    let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
-//        cv.backgroundColor = .white
-    cv.backgroundColor = UIColor(red: 55.0/255.0, green: 69.0/255.0, blue: 80.0/255.0, alpha: 1.0)
+    let cv = UICollectionView(frame: .zero,
+                              collectionViewLayout: collectionViewFlowLayout)
+    cv.backgroundColor = .white
+//    cv.backgroundColor = UIColor(red: 55.0/255.0, green: 69.0/255.0, blue: 80.0/255.0, alpha: 1.0)
     return cv
   }()
 
@@ -45,14 +45,19 @@ class MenuLauncher: NSObject {
   var mapViewController: MapViewController? {
     didSet {
       print("mapViewController set")
-      menuItems = [ MenuItem(name: .TermsPrivacy, imageName: "navBarIcon"),
+      menuItems = [ MenuItem(name: .Home, imageName: "navBarIcon"),
+                    MenuItem(name: .About, imageName: "navBarIcon"),
+                    MenuItem(name: .PlanADrive, imageName: "navBarIcon"),
+                    MenuItem(name: .RoadRules, imageName: "navBarIcon"),
+                    MenuItem(name: .EmergencyContact, imageName: "navBarIcon"),
                     MenuItem(name: .Cancel, imageName: "navBarIcon") ]
     }
   }
 
   @objc func showControllerForSetting(menuItem: MenuItem) {
+    print("[MenuLauncher] showControllerForSetting. menuItem: ", menuItem)
+    print("[MenuLauncher] showControllerForSetting. self.mapViewController: ", self.mapViewController)
     if self.mapViewController != nil {
-      // TODO: create this method
       self.mapViewController?.showControllerForSetting(menuItem:menuItem)
     }
   }
@@ -62,18 +67,18 @@ class MenuLauncher: NSObject {
     if let window = UIApplication.shared.keyWindow {
       let tapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                         action: #selector(handleDismissMainMenu))
-      blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-      blackView.addGestureRecognizer(tapGestureRecognizer)
+      menuTintView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+      menuTintView.addGestureRecognizer(tapGestureRecognizer)
 
-      window.addSubview(blackView)
+      window.addSubview(menuTintView)
       window.addSubview(collectionView)
 
       collectionView.frame = CGRect(x: -window.frame.width,
                                     y: 0,
-                                    width: window.frame.width * 0.4,
+                                    width: window.frame.width * Constants.MENU_LAUNCHER_WIDTH,
                                     height: window.frame.height)
-      blackView.frame = window.frame
-      blackView.alpha = 0
+      menuTintView.frame = window.frame
+      menuTintView.alpha = 0
 
       UIView.animate(withDuration: 0.5,
                      delay: 0,
@@ -81,7 +86,7 @@ class MenuLauncher: NSObject {
                      initialSpringVelocity: 1,
                      options: .curveEaseOut,
                      animations: {
-        self.blackView.alpha = 1
+        self.menuTintView.alpha = 1
         self.collectionView.frame = CGRect(x: 0, y: 0, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
       }, completion: nil)
     }
@@ -90,14 +95,14 @@ class MenuLauncher: NSObject {
   }
 
   @objc func handleDismissMainMenu(menuItem: MenuItem) {
-    print("handleDismissMainMenu")
+    print("[MenuLauncher] handleDismissMainMenu. menuItem.name: ", menuItem.name)
     UIView.animate(withDuration: 0.5,
                    delay: 0,
                    usingSpringWithDamping: 1,
                    initialSpringVelocity: 1,
                    options: .curveEaseOut, animations: {
 
-      self.blackView.alpha = 0
+      self.menuTintView.alpha = 0
       if let window = UIApplication.shared.keyWindow {
         // hides the menu
         self.collectionView.frame = CGRect(x: -window.frame.width,
@@ -106,11 +111,7 @@ class MenuLauncher: NSObject {
                                            height: self.collectionView.frame.height)
       }
     }) { (completed: Bool) in
-//      if menuItem.name == .OptOut {
-//        self.presentOptOutDialog(menuItem: menuItem)
-//      } else if menuItem.name != .Cancel {
-//        self.showControllerForSetting(menuItem: menuItem)
-//      }
+      self.showControllerForSetting(menuItem: menuItem)
     }
   }
 
@@ -118,8 +119,8 @@ class MenuLauncher: NSObject {
     super.init()
     collectionView.dataSource = self
     collectionView.delegate = self
-    collectionView.register(MenuItemCell.self, forCellWithReuseIdentifier: menuItemCellId)
-    collectionView.register(MenuIconCell.self, forCellWithReuseIdentifier: menuIconCellId)
+    collectionView.register(MenuItemCell.self, forCellWithReuseIdentifier: "\(MenuItemCell.self)")
+    collectionView.register(MenuIconCell.self, forCellWithReuseIdentifier: "\(MenuIconCell.self)")
   }
 }
 
@@ -134,11 +135,11 @@ extension MenuLauncher: UICollectionViewDataSource {
 
     if indexPath.row == 0 {
       // different cell configuration?
-      menuIconCell = collectionView.dequeueReusableCell(withReuseIdentifier: menuIconCellId, for: indexPath) as! MenuIconCell // downcasting
+      menuIconCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MenuIconCell.self)", for: indexPath) as! MenuIconCell // downcasting
       return menuIconCell
     } else {
       let menuItem = menuItems[indexPath.row-1]
-      menuItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: menuItemCellId, for: indexPath) as! MenuItemCell // downcasting
+      menuItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MenuItemCell.self)", for: indexPath) as! MenuItemCell // downcasting
       menuItemCell.menuItem = menuItem
       return menuItemCell
     }
@@ -151,9 +152,9 @@ extension MenuLauncher: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
                        sizeForItemAt indexPath: IndexPath) -> CGSize {
     if indexPath.row == 0 {
       return CGSize(width: collectionView.frame.width, height: Constants.MENU_LAUNCHER_ITEM_SIZE)
-    } else {
-      return CGSize(width: collectionView.frame.width, height: cellHeight)
     }
+
+    return CGSize(width: collectionView.frame.width, height: cellHeight)
   }
 
   func collectionView (_ collectionView: UICollectionView,
@@ -164,6 +165,7 @@ extension MenuLauncher: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
 
   func collectionView (_ collectionView: UICollectionView,
                        didSelectItemAt indexPath: IndexPath) {
+    print("[MenuLauncher] didSelectItemAt: ", indexPath.row)
     if indexPath.row == 0 {
       UIView.animate(withDuration: 0.5,
                      delay: 0,
@@ -171,7 +173,7 @@ extension MenuLauncher: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
                      initialSpringVelocity: 1,
                      options: .curveEaseOut,
                      animations: {
-        self.blackView.alpha = 0
+        self.menuTintView.alpha = 0
         if let window = UIApplication.shared.keyWindow {
           // hides the menu
           self.collectionView.frame = CGRect(x: -window.frame.width,
